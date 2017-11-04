@@ -1,5 +1,4 @@
-package com.example.liangminglin.mywaitor;
-
+package com.example.lap.mywaytor;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -28,7 +27,7 @@ public class payActivity extends AppCompatActivity {
                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent payment= new Intent(payActivity.this, MainActivity.class);
+                        Intent payment= new Intent(payActivity.this, LoginActivity.class);
                         startActivity(payment);
                     }
                 });
