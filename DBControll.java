@@ -1,10 +1,13 @@
 package com.example.liangminglin.mywaitor;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.content.Context;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.database.*;
+import java.util.*;
 
 
 /**
@@ -24,12 +27,22 @@ public class DBControll extends SQLiteOpenHelper {
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_AGE = "age";
 
+
+    //Menu Dish Table Column Names
+    private static final String TABLE_MENU_DISH = "Dish";
+    private static final String KEY_MENU_DISH_pID = "DISH_pID";
+    private static final String KEY_MENU_DISH_NAME = "DISH_NAME";
+    private static final String KEY_MENU_DISH_PRICE = "DISH_PRICE";
+    private static final String KEY_MENU_DISH_QUANTITY = "DISH_QUANTITY";
+    private static final String KEY_MENU_DISH_REGISTRATION_pID = "DISH_REGISTRATION_pID";
+
     private static final String TABLE_CREATE = "create table Info (id integer primary key not null , " +
             "uName text not null, pass text not null, email text not null, age text not null)";
 
     public DBControll(Context context)
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        SQLiteDatabase db = this.getWritableDatabase();
     }
 
 
@@ -56,6 +69,20 @@ public class DBControll extends SQLiteOpenHelper {
 
         db.insert(TABLE_NAME,null, values);
     }
+    //Database insert dish menu data routine
+    public void insertMenuDish(MenuDish menuDish) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_MENU_DISH_NAME, menuDish.getDish_Name());
+        values.put(KEY_MENU_DISH_PRICE, menuDish.getDish_Price());
+        values.put(KEY_MENU_DISH_QUANTITY, menuDish.getDish_Quantity());
+        //values.put(KEY_MENU_DISH_REGISTRATION_pID, menuDish.getDish_Registration_pID());
+
+        db.insert(TABLE_MENU_DISH, null, values);
+        db.close();
+    }
+
 
     public String searchPass(String userID){
 

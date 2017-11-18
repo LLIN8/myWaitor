@@ -2,10 +2,17 @@ package com.example.liangminglin.mywaitor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
+import android.support.v7.widget.Toolbar;
+import android.view.*;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageButton;
+import android.widget.*;
+import android.text.*;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent fChicken = new Intent(com.example.liangminglin.mywaitor.MainActivity.this, NewActivity.class);
+                Intent fChicken = new Intent(MainActivity.this, NewActivity.class);
                 startActivity(fChicken);
             }
         });
@@ -34,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent payment= new Intent(com.example.liangminglin.mywaitor.MainActivity.this, paymentActivity.class);
+                Intent payment= new Intent(MainActivity.this, paymentActivity.class);
                 startActivity(payment);
             }
         });

@@ -1,17 +1,21 @@
-package com.example.jchen415.mywaytormobileapplication;
+package com.example.liangminglin.mywaitor;
+
+/**
+ * Created by liangminglin on 11/18/17.
+ */
 
 public class MenuDish {
 
     private int dish_ID;
     private String customer_Name;
     private String dish_Name;
-    private double dish_Price;
+    private String dish_Price;
     private int dish_Quantity;
 
     public MenuDish() {
 
     }
-    public MenuDish(int dish_ID, String customer_Name, String dish_Name, double dish_Price, int dish_Quantity) {
+    public MenuDish(int dish_ID, String customer_Name, String dish_Name, String dish_Price, int dish_Quantity) {
 
         this.dish_ID = dish_ID;
         this.customer_Name = customer_Name;
@@ -44,11 +48,11 @@ public class MenuDish {
         this.dish_Name = dish_Name;
     }
 
-    public double getDish_Price() {
+    public String getDish_Price() {
         return dish_Price;
     }
 
-    public void setDish_Price(double dish_Price) {
+    public void setDish_Price(String dish_Price) {
         this.dish_Price = dish_Price;
     }
 
