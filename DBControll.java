@@ -1,11 +1,10 @@
-package com.example.jchen415.mywaytormobileapplication;
+package com.example.xxx;
 
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.*;
-
 import java.util.*;
 
 //Database controller; responsible for manipulating all database interaction activities
@@ -67,12 +66,26 @@ public class DBController extends SQLiteOpenHelper {
     private static final String KEY_MENU_APPETIZER_QUANTITY = "APPETIZER_QUANTITY";
     private static final String KEY_MENU_APPETIZER_REGISTRATION_pID = "APPETIZER_REGISTRATION_pID";
 
+
     //Menu Drinks Table Column Names
     private static final String KEY_MENU_DRINKS_pID = "DRINKS_pID";
     private static final String KEY_MENU_DRINKS_NAME = "DRINKS_NAME";
     private static final String KEY_MENU_DRINKS_PRICE = "DRINKS_PRICE";
     private static final String KEY_MENU_DRINKS_QUANTITY = "DRINKS_QUANTITY";
     private static final String KEY_MENU_DRINKS_REGISTRATION_pID = "DRINKS_REGISTRATION_pID";
+
+
+    //Menu Dish Table Column Names
+    private static final String TABLE_MENU_DISH = "Dish";
+    private static final String KEY_MENU_DISH_pID = "DISH_pID";
+    private static final String KEY_MENU_DISH_NAME = "DISH_NAME";
+    private static final String KEY_MENU_DISH_PRICE = "DISH_PRICE";
+    private static final String KEY_MENU_DISH_QUANTITY = "DISH_QUANTITY";
+    private static final String KEY_MENU_DISH_REGISTRATION_pID = "DISH_REGISTRATION_pID";
+
+    private static final String TABLE_CREATE = "create table Info (id integer primary key not null , " +
+            "uName text not null, pass text not null, email text not null, age text not null)";
+
 
     //Menu Desserts Table Column Names
     private static final String KEY_MENU_DESSERTS_pID = "DESSERTS_pID";
@@ -146,6 +159,20 @@ public class DBController extends SQLiteOpenHelper {
         c.close();
         return FK;
     }
+    //Database insert dish menu data routine
+    public void insertMenuDish(MenuDish menuDish) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_MENU_DISH_NAME, menuDish.getDish_Name());
+        values.put(KEY_MENU_DISH_PRICE, menuDish.getDish_Price());
+        values.put(KEY_MENU_DISH_QUANTITY, menuDish.getDish_Quantity());
+        //values.put(KEY_MENU_DISH_REGISTRATION_pID, menuDish.getDish_Registration_pID());
+
+        db.insert(TABLE_MENU_DISH, null, values);
+        db.close();
+    }
+
 
     //Database insert user card data routine
     public void insertCardData(CardHolder cardholder) {
